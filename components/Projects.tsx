@@ -2,30 +2,61 @@ const projects = [
   {
     title: "Easy Drugs",
     description:
-      "QA engagement for a Canadian pharmaceutical e-commerce platform. Responsible for end-to-end manual testing across the web UI, REST APIs, and database layers — covering product listings, prescription workflows, checkout, and user account management to ensure regulatory-grade quality.",
-    tags: ["Manual Testing", "Web UI", "REST API", "Database", "Jira"],
+      "Test automation for a Canadian pharmaceutical e-commerce platform. Built and extended the Java and Selenium suite across product listings, prescription workflows, checkout and account management, backed by REST Assured modules on the API layer and SQL checks asserting database state behind each UI flow.",
+    tags: ["Java", "Selenium", "TestNG", "REST Assured", "Page Object Model", "SQL"],
     highlights: [
-      "Web UI, REST API, and database testing",
-      "Pharma-grade quality standards",
-      "Bug reporting and triage in Jira",
-      "Test case design and execution",
+      "120+ automated test cases in Java, Selenium and TestNG",
+      "Framework refactored into a Page Object Model, cutting maintenance overhead by 65%",
+      "REST Assured and Postman modules validating request and response payloads",
+      "SQL checks asserting database state behind each UI flow",
+      "Defects logged and tracked in Jira with the development team",
     ],
     github: null,
     badge: "Active Engagement",
   },
   {
-    title: "Audible App Automation",
+    title: "Atimi Website Rebuild",
     description:
-      "End-to-end mobile automation suite for the Audible app on iOS and Android. Covers authentication flows, library browsing, and playback interactions with robust locator strategies.",
-    tags: ["Java", "Appium", "iOS", "Android", "TestNG"],
+      "QA owner for a ground-up rebuild of Atimi's corporate website, working to a v1.0 Test Plan spanning 17 epics across functional, accessibility, performance, security and SEO. Built the TypeScript and Playwright framework ahead of the new build and proved it against the live site.",
+    tags: ["TypeScript", "Playwright", "axe-core", "WCAG 2.1 AA", "Test Strategy"],
     highlights: [
-      "iOS + Android coverage",
-      "Configurable per-device JSON configs",
-      "Video recording on test failure",
-      "Extent report dashboard",
+      "Test Plan spans 17 epics with a 70% automation coverage target",
+      "WCAG 2.1 AA scanned on every story rather than deferred to the end",
+      "Framework running 173 executions across 8 browser and device projects",
+      "45-path baseline inventory gates the migration, every URL must return 200",
+      "Surfaced two real WCAG defects including a Level A keyboard trap",
     ],
     github: null,
-    badge: null,
+    badge: "Active Engagement",
+  },
+  {
+    title: "Dminer Data Quality Automation",
+    description:
+      "Python tooling for a client's internal data platform. Automated verification and reconciliation of a company, contact and project dataset extracted from mail archives, plus a Selenium tool that resolves contacts against public profiles.",
+    tags: ["Python", "Selenium", "SQLite", "pandas", "pytest"],
+    highlights: [
+      "Rule-based and hand-read verification pass over 10,708 company records",
+      "2,460 bad rows identified, 23% of the table",
+      "All 76 rows deleted upstream were already in the flagged set",
+      "465 projects reconciled across four conflicting sources",
+      "Selenium and persistent Chrome profile for headless contact lookup",
+    ],
+    github: null,
+    badge: "Active Engagement",
+  },
+  {
+    title: "Margaritaville at Sea App",
+    description:
+      "QA and test automation for the Margaritaville at Sea cruise app build. Owned functional testing on iOS and Android and built the automation alongside it, scoped by a competitor teardown that defined the feature set the app had to match.",
+    tags: ["iOS", "Android", "Functional QA", "Test Automation", "APK Analysis"],
+    highlights: [
+      "Functional QA of the app on iOS and Android",
+      "Automation suite built alongside the build",
+      "544 competitor feature rows across 13 apps consolidated into one canonical set",
+      "Static analysis of shipped competitor binaries for SDK and architecture findings",
+    ],
+    github: null,
+    badge: "Active Engagement",
   },
 ];
 
