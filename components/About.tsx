@@ -1,66 +1,56 @@
+import SectionLabel from "./SectionLabel";
+import { learning, skills } from "@/lib/content";
+
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 bg-slate-800">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-10 text-center">
-          About Me
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="text-slate-300 leading-relaxed space-y-4">
+    <section id="about" className="bg-surface scroll-mt-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-24 grid lg:grid-cols-2 gap-16">
+        <div>
+          <SectionLabel index="02" label="About" />
+          <h2 className="font-display font-medium text-3xl sm:text-4xl tracking-[-0.02em] text-ink mb-8">
+            Tests, and the tooling around them.
+          </h2>
+          <div className="space-y-5 text-muted text-[17px] leading-relaxed">
             <p>
-              I&apos;m a QA Automation Engineer building test automation for web
-              and mobile applications across several client projects. I write
-              suites in Java with Selenium, Appium and TestNG on a shared
-              in-house framework, in TypeScript with Playwright, and in Python
-              for data-quality tooling.
+              I&apos;m an Associate QA Engineer at Atimi Software in Bengaluru, where I joined as a QA
+              Trainee in May 2024. I write automation for web and mobile client projects: Java with
+              Selenium, Appium and TestNG on a shared in-house framework, TypeScript with Playwright,
+              and Python for data-quality work.
             </p>
             <p>
-              I also build{" "}
-              <span className="text-blue-400 font-medium">AI-assisted tooling</span>{" "}
-              with Claude Code that turns repeat QA work into a single command,
-              from report triage to competitor app analysis. Alongside my day
-              job I&apos;m learning Linux, Docker and CI/CD, the direction I&apos;m
-              growing in next.
+              Alongside the suites I build AI-assisted tooling with Claude Code, so the repeat work
+              around testing, from report triage to competitor app analysis, becomes a single command.
             </p>
             <p>
-              I&apos;m a hard worker with 100% commitment. When I start
-              something, I finish it, whether that&apos;s a test suite, a
-              pipeline, or a certification.
+              Next I&apos;m growing toward CI/CD, so the tests I write also run, report and gate every push.
             </p>
           </div>
 
-          {/* Differentiator callout */}
-          <div className="rounded-2xl border border-blue-500/30 bg-blue-500/5 p-6">
-            <div className="flex items-start gap-3 mb-4">
-              <span className="text-2xl">💡</span>
-              <h3 className="text-white font-bold text-lg leading-tight">
-                My Unique Edge
-              </h3>
-            </div>
-            <p className="text-slate-300 leading-relaxed">
-              I can build a CI/CD pipeline{" "}
-              <strong className="text-white">and</strong> write production-quality
-              automated tests inside it. Most DevOps candidates can only do the
-              pipeline side. Most QA engineers can only do the tests. I do both.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {[
-                "CI/CD Pipelines",
-                "Automated Testing",
-                "AI-Assisted Tooling",
-                "Multi-platform (iOS/Android/Web)",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 text-sm text-slate-400"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                  {item}
-                </div>
+          <div className="mt-12">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-4">Learning path</p>
+            <ol className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden">
+              {learning.map((l) => (
+                <li key={l.topic} className="bg-bg p-4">
+                  <p className={`font-mono text-xs mb-1 ${l.active ? "text-accent" : "text-faint"}`}>
+                    {l.active && <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent mr-1.5 align-middle" />}
+                    {l.step}
+                  </p>
+                  <p className="text-sm text-ink leading-snug">{l.topic}</p>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
+        </div>
+
+        <div className="lg:pt-14">
+          <dl className="divide-y divide-line border-y border-line">
+            {skills.map((s) => (
+              <div key={s.group} className="py-6 grid sm:grid-cols-[10rem_1fr] gap-3">
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-faint pt-1">{s.group}</dt>
+                <dd className="text-ink leading-relaxed">{s.items.join(" · ")}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

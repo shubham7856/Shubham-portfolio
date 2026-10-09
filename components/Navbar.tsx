@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 
-const navLinks = [
+const links = [
+  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Learning", href: "#roadmap" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -14,67 +12,53 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <span className="text-blue-400 font-bold text-lg tracking-tight">
+    <header className="sticky top-0 z-50 bg-bg/85 backdrop-blur-md border-b border-line">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+        <a href="#top" className="font-display font-semibold text-ink tracking-tight">
           Shubham Sinha
-        </span>
+        </a>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-slate-400 hover:text-white text-sm transition-colors"
-            >
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm text-muted hover:text-ink transition-colors duration-200">
               {link.label}
             </a>
           ))}
           <a
             href="/resume.pdf"
-            download
-            className="ml-2 px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium px-4 py-2 rounded-full bg-ink text-bg hover:opacity-85 transition-opacity duration-200"
           >
-            Download Resume
+            Resume
           </a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          className="md:hidden text-slate-400 hover:text-white"
+          className="md:hidden text-muted hover:text-ink"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M4 8h16M4 16h16" />
             )}
           </svg>
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-slate-800 border-t border-slate-700 px-4 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-slate-300 hover:text-white text-sm transition-colors"
-              onClick={() => setOpen(false)}
-            >
+        <div className="md:hidden border-t border-line px-4 py-4 flex flex-col gap-4 bg-bg">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-muted hover:text-ink" onClick={() => setOpen(false)}>
               {link.label}
             </a>
           ))}
-          <a
-            href="/resume.pdf"
-            download
-            className="inline-block px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors text-center"
-          >
-            Download Resume
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-ink font-medium">
+            Resume
           </a>
         </div>
       )}

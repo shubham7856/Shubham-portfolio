@@ -1,9 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Evidence from "@/components/Evidence";
+import Work from "@/components/Work";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import DevOpsRoadmap from "@/components/DevOpsRoadmap";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -12,10 +11,9 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Evidence />
+        <Work />
         <About />
-        <Skills />
-        <Projects />
-        <DevOpsRoadmap />
         <Contact />
       </main>
     </>

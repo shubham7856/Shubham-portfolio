@@ -1,76 +1,65 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
-const roles = ["QA Automation Engineer", "SDET"];
+import { profile, testRun } from "@/lib/content";
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setRoleIndex((i) => (i + 1) % roles.length);
-        setVisible(true);
-      }, 400);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-24 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800">
-      <div className="max-w-3xl mx-auto">
-        <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">
-          Portfolio
+    <section id="top" className="max-w-6xl mx-auto px-4 sm:px-8 pt-16 sm:pt-24 pb-20 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-6">
+          {profile.title} · {profile.company}
         </p>
-
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-          Shubham Sinha
+        <h1 className="font-display font-medium text-ink text-[2.6rem] sm:text-6xl lg:text-[4.25rem] leading-[1.05] tracking-[-0.02em] mb-6">
+          I test what ships, and build the tools that test it faster.
         </h1>
-
-        <div className="h-10 flex items-center justify-center mb-6">
-          <span
-            className="text-xl sm:text-2xl text-blue-400 font-medium transition-opacity duration-400"
-            style={{ opacity: visible ? 1 : 0 }}
-          >
-            {roles[roleIndex]}
-          </span>
-        </div>
-
-        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
-          I write automated tests across web and mobile{" "}
-          <span className="text-white font-semibold">and</span> build the AI
-          tooling that makes the QA work around them faster.
+        <p className="text-muted text-lg leading-relaxed max-w-xl mb-10">
+          QA Automation Engineer working across web and mobile client projects in Java, TypeScript
+          and Python. Open to SDET and QA Automation roles.
         </p>
-
-        <p className="text-slate-500 text-sm mb-10">
-          Based in India · Open to SDET and QA Automation roles
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-wrap gap-3">
           <a
-            href="#projects"
-            className="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors"
+            href="#work"
+            className="px-6 py-3 rounded-full bg-ink text-bg font-medium hover:opacity-85 transition-opacity duration-200"
           >
-            View Projects
+            See the work
           </a>
           <a
-            href="#contact"
-            className="px-6 py-3 rounded-lg border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold transition-colors"
+            href={`mailto:${profile.email}`}
+            className="px-6 py-3 rounded-full border border-line text-ink font-medium hover:border-ink transition-colors duration-200"
           >
-            Contact Me
+            Get in touch
           </a>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600">
-        <span className="text-xs">scroll</span>
-        <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+      <div
+        className="rounded-3xl bg-console text-console-ink font-mono text-[13px] leading-relaxed shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)] overflow-hidden"
+        aria-label="Highlights from my test work, shown as a passing test run"
+      >
+        <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          <span className="ml-3 text-console-muted text-xs">~/shubham $ npx run-portfolio</span>
+        </div>
+        <ul className="px-5 py-5 space-y-2.5">
+          {testRun.map((t, i) => (
+            <li
+              key={t.check}
+              className="reveal-line flex gap-3"
+              style={{ animationDelay: `${300 + i * 260}ms` }}
+            >
+              <span className="text-[#4cc596] shrink-0">✓</span>
+              <span>
+                <span className="text-console-muted">{t.suite}</span> {t.check}
+              </span>
+            </li>
+          ))}
+          <li
+            className="reveal-line pt-3 mt-3 border-t border-white/10 text-console-muted"
+            style={{ animationDelay: `${300 + testRun.length * 260}ms` }}
+          >
+            <span className="text-[#4cc596]">{testRun.length} passed</span>, 0 failed
+          </li>
+        </ul>
       </div>
     </section>
   );
