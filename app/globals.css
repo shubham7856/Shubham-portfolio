@@ -1,54 +1,38 @@
 @import "tailwindcss";
 
+/* One dark theme, top to bottom: deep navy, ivory text, champagne gold, steel blue, pass green. */
 :root {
-  --bg: #f7f5f0;
-  --surface: #efebe2;
-  --ink: #0f1b2d;
-  --muted: #4b5767;
-  --faint: #7a8494;
-  --line: #ddd7ca;
-  --accent: #8a6a2b;
-  --accent-soft: #efe4cc;
-  --console-bg: #0a1628;
-  --console-ink: #f2eee6;
-  --console-muted: #8a97ab;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0a1628;
-    --surface: #0f1f36;
-    --ink: #ece8df;
-    --muted: #a7b0be;
-    --faint: #6f7b8e;
-    --line: #1e2e47;
-    --accent: #d4b06a;
-    --accent-soft: #2a2414;
-    --console-bg: #071020;
-    --console-ink: #f2eee6;
-    --console-muted: #8a97ab;
-  }
+  color-scheme: dark;
+  --bg: #0a1628;
+  --bg-deep: #071020;
+  --surface: #0f1f36;
+  --surface-2: #142847;
+  --ink: #f2eee6;
+  --muted: #a7b0be;
+  --faint: #6f7b8e;
+  --line: #1e2e47;
+  --accent: #d4b06a;
+  --accent-hover: #e2c487;
+  --steel: #7fa7d9;
+  --pass: #6cc59b;
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-console: var(--console-bg);
-  --color-console-ink: var(--console-ink);
-  --color-console-muted: var(--console-muted);
+  --color-accent-hover: var(--accent-hover);
+  --color-steel: var(--steel);
+  --color-pass: var(--pass);
   --font-sans: var(--font-inter);
   --font-display: var(--font-grotesk);
   --font-mono: var(--font-mono-jb);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -58,8 +42,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--bg);
 }
 
 /* Lenis recommended base styles */
@@ -71,122 +55,91 @@ html.lenis body {
   scroll-behavior: auto !important;
 }
 
-/* Custom cursor, only switched on by Cursor.tsx for fine pointers without reduced motion */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0;
-  border-radius: 999px;
-  mix-blend-mode: difference;
-}
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-}
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1px solid #fff;
-}
-html.has-cursor,
-html.has-cursor a,
-html.has-cursor button {
-  cursor: none;
+/* Faint dotted grid behind dark sections, like graph paper on a test bench */
+.grid-paper {
+  background-image: radial-gradient(rgba(127, 167, 217, 0.13) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Work: stacked on mobile, a two-column grid on desktop, and a pinned sideways row
-   only when ScrollFx adds .is-horizontal (desktop with motion allowed). */
-.work-track {
+/* Odometer digits: each strip holds 0-9 stacked, translated to the right digit */
+.odo-digit {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: top;
+}
+.odo-strip {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
-.work-hint {
-  display: none;
-}
-@media (min-width: 1024px) {
-  .work-track {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-    max-width: 72rem;
-    margin: 0 auto;
-  }
-  .work-intro {
-    grid-column: 1 / -1;
-    margin-bottom: 1rem;
-  }
-  .work-pin.is-horizontal {
-    height: 100svh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-  .work-pin.is-horizontal .work-track {
-    display: flex;
-    flex-direction: row;
-    max-width: none;
-    margin: 0;
-    padding: 0 8vw 0 max(2rem, calc((100vw - 72rem) / 2 + 2rem));
-    will-change: transform;
-  }
-  .work-pin.is-horizontal .work-intro {
-    width: 30rem;
-    padding-right: 2rem;
-    margin-bottom: 0;
-  }
-  .work-pin.is-horizontal .project-card {
-    width: 34rem;
-    height: 34rem;
-  }
-  .work-pin.is-horizontal .work-hint {
-    display: inline;
-  }
+.odo-strip > span {
+  height: 1em;
+  line-height: 1;
 }
 
-/* Skills marquee */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
+/* Test runner cards */
+.run-step[data-state="pending"] .run-icon::before {
+  content: "○";
+  color: var(--faint);
 }
-.marquee-reverse {
-  animation-direction: reverse;
-  animation-duration: 48s;
+.run-step[data-state="running"] .run-icon::before {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border: 2px solid var(--steel);
+  border-right-color: transparent;
+  border-radius: 999px;
+  animation: spin 0.6s linear infinite;
 }
-@keyframes marquee {
+.run-step[data-state="passed"] .run-icon::before {
+  content: "✓";
+  color: var(--pass);
+}
+.run-step[data-state="pending"] .run-text {
+  color: var(--faint);
+}
+@keyframes spin {
   to {
-    transform: translateX(-50%);
+    transform: rotate(360deg);
   }
 }
 
-.scroll-cue {
-  animation: cue 2s ease-in-out infinite;
-  transform-origin: top;
+.blink {
+  animation: blink 1s steps(1) infinite;
 }
-@keyframes cue {
-  0%,
-  100% {
-    transform: scaleY(0.3);
-    opacity: 0.4;
-  }
+@keyframes blink {
   50% {
-    transform: scaleY(1);
-    opacity: 1;
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .blink,
+  .run-step .run-icon::before {
+    animation: none !important;
   }
-  .marquee-track,
-  .scroll-cue {
-    animation: none;
-  }
+}
+
+/* Skills pit: a wrapped list by default, absolutely placed physics pills once live */
+.pit-hint {
+  display: none;
+}
+.pit-live .pit-list {
+  padding: 0;
+}
+.pit-live [data-pill] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+.pit-grab [data-pill] {
+  cursor: grab;
+}
+.pit-grab:active [data-pill] {
+  cursor: grabbing;
+}
+.pit-grab .pit-hint {
+  display: block;
 }

@@ -10,12 +10,11 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-8 pt-24 pb-12 scroll-mt-16">
-      <SectionLabel index="03" label="Contact" />
-      <h2 data-split className="font-display font-medium text-4xl sm:text-7xl tracking-[-0.02em] text-ink mb-10 max-w-4xl leading-[1.05]">
-        Hiring an SDET or QA Automation Engineer?
+      <SectionLabel index="04" label="Contact" />
+      <h2 data-scramble className="font-display font-medium text-4xl sm:text-7xl tracking-[-0.02em] text-ink mb-10 max-w-4xl leading-[1.05]">
+        Need someone to break it before your users do?
       </h2>
       <a
-        data-magnetic
         href={`mailto:${profile.email}`}
         className="inline-block font-display text-xl sm:text-3xl text-accent underline decoration-1 underline-offset-[6px] decoration-accent/40 hover:decoration-accent transition-colors duration-200 break-all"
       >

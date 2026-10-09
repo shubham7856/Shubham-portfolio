@@ -1,13 +1,13 @@
 import SectionLabel from "./SectionLabel";
-import { learning, skills } from "@/lib/content";
+import { learning } from "@/lib/content";
 
 export default function About() {
   return (
-    <section id="about" className="bg-surface scroll-mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-24 grid lg:grid-cols-2 gap-16">
+    <section id="about" className="border-y border-line bg-bg-deep grid-paper scroll-mt-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-28 grid lg:grid-cols-[1.2fr_1fr] gap-16">
         <div>
-          <SectionLabel index="02" label="About" />
-          <h2 data-split className="font-display font-medium text-3xl sm:text-5xl tracking-[-0.02em] text-ink mb-8">
+          <SectionLabel index="03" label="About" />
+          <h2 data-scramble className="font-display font-medium text-4xl sm:text-5xl tracking-[-0.025em] text-ink mb-8">
             Tests, and the tooling around them.
           </h2>
           <div data-reveal className="space-y-5 text-muted text-[17px] leading-relaxed">
@@ -21,36 +21,28 @@ export default function About() {
               Alongside the suites I build AI-assisted tooling with Claude Code, so the repeat work
               around testing, from report triage to competitor app analysis, becomes a single command.
             </p>
-            <p>
-              Next I&apos;m growing toward CI/CD, so the tests I write also run, report and gate every push.
-            </p>
-          </div>
-
-          <div data-reveal className="mt-12">
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-4">Learning path</p>
-            <ol className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden">
-              {learning.map((l) => (
-                <li key={l.topic} className="bg-bg p-4">
-                  <p className={`font-mono text-xs mb-1 ${l.active ? "text-accent" : "text-faint"}`}>
-                    {l.active && <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent mr-1.5 align-middle" />}
-                    {l.step}
-                  </p>
-                  <p className="text-sm text-ink leading-snug">{l.topic}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
 
-        <div data-reveal className="lg:pt-14">
-          <dl className="divide-y divide-line border-y border-line">
-            {skills.map((s) => (
-              <div key={s.group} className="py-6 grid sm:grid-cols-[10rem_1fr] gap-3">
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-faint pt-1">{s.group}</dt>
-                <dd className="text-ink leading-relaxed">{s.items.join(" · ")}</dd>
-              </div>
+        <div data-reveal className="lg:pt-16">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-6">
+            pipeline: <span className="text-steel">growing-toward-ci-cd</span>
+          </p>
+          <ol className="relative border-l-2 border-line ml-2 space-y-7">
+            {learning.map((l) => (
+              <li key={l.topic} className="pl-7 relative">
+                <span
+                  className={`absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 ${
+                    l.active ? "border-accent bg-accent/30 animate-pulse" : "border-line bg-bg-deep"
+                  }`}
+                />
+                <p className={`font-mono text-xs mb-1 ${l.active ? "text-accent" : "text-faint"}`}>
+                  {l.active ? "running" : "queued"} · {l.step.toLowerCase()}
+                </p>
+                <p className={`font-display text-xl ${l.active ? "text-ink" : "text-muted"}`}>{l.topic}</p>
+              </li>
             ))}
-          </dl>
+          </ol>
         </div>
       </div>
     </section>
