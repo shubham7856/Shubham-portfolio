@@ -25,7 +25,7 @@ export default function Contact() {
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-white mb-2">Get In Touch</h2>
         <p className="text-slate-500 text-sm mb-10">
-          Open to DevOps, Platform, and Cloud Engineering roles — let&apos;s talk.
+          Open to SDET and QA Automation roles. Let&apos;s talk.
         </p>
 
         <a

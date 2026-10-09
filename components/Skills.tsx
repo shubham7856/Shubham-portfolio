@@ -2,27 +2,27 @@ const skillGroups = [
   {
     label: "Languages",
     color: "bg-violet-500/10 text-violet-300 border-violet-500/20",
-    skills: ["Java", "Bash", "SQL"],
+    skills: ["Java", "TypeScript", "Python", "SQL", "Bash"],
   },
   {
     label: "Testing",
     color: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
-    skills: ["Appium", "Selenium", "TestNG", "Page Object Model", "Extent Reports"],
+    skills: ["Selenium", "Appium", "Playwright", "TestNG", "REST Assured", "pytest", "axe-core", "Page Object Model", "Extent Reports"],
   },
   {
-    label: "Cloud",
-    color: "bg-blue-500/10 text-blue-300 border-blue-500/20",
-    skills: ["Azure (Advanced)", "AWS (Basic)", "Azure Pipelines"],
+    label: "AI Tooling",
+    color: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
+    skills: ["Claude Code", "Custom Skills", "MCP", "Ollama"],
+  },
+  {
+    label: "CI / CD and Cloud",
+    color: "bg-pink-500/10 text-pink-300 border-pink-500/20",
+    skills: ["Azure Pipelines", "GitHub Actions", "Azure", "AWS (Basic)"],
   },
   {
     label: "Tools",
     color: "bg-orange-500/10 text-orange-300 border-orange-500/20",
-    skills: ["Docker (Basic)", "Git", "GitHub", "IntelliJ IDEA", "Maven"],
-  },
-  {
-    label: "CI / CD",
-    color: "bg-pink-500/10 text-pink-300 border-pink-500/20",
-    skills: ["Azure Pipelines", "GitHub Actions"],
+    skills: ["Git", "GitHub", "Jira", "Maven", "Docker (Learning)"],
   },
 ];
 

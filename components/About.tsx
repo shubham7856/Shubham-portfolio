@@ -9,24 +9,23 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="text-slate-300 leading-relaxed space-y-4">
             <p>
-              I&apos;m a QA Automation Engineer with hands-on experience building
-              multi-platform test automation frameworks for iOS, Android, and
-              web applications in Java. I designed{" "}
-              <span className="text-white font-semibold">jarvis-core</span> — a
-              custom framework used across multiple product teams — and ship
-              CI/CD-integrated test suites daily.
+              I&apos;m a QA Automation Engineer building test automation for web
+              and mobile applications across several client projects. I write
+              suites in Java with Selenium, Appium and TestNG on a shared
+              in-house framework, in TypeScript with Playwright, and in Python
+              for data-quality tooling.
             </p>
             <p>
-              My background is strong on{" "}
-              <span className="text-blue-400 font-medium">Azure</span>, CI/CD
-              pipelines, and automated testing. Over the next 6 months, I&apos;m
-              going deep on Docker, Kubernetes, Terraform, and cloud-native
-              monitoring to fully transition into a DevOps / Platform Engineering
-              role.
+              I also build{" "}
+              <span className="text-blue-400 font-medium">AI-assisted tooling</span>{" "}
+              with Claude Code that turns repeat QA work into a single command,
+              from report triage to competitor app analysis. Alongside my day
+              job I&apos;m learning Linux, Docker and CI/CD, the direction I&apos;m
+              growing in next.
             </p>
             <p>
               I&apos;m a hard worker with 100% commitment. When I start
-              something, I finish it — whether that&apos;s a test suite, a
+              something, I finish it, whether that&apos;s a test suite, a
               pipeline, or a certification.
             </p>
           </div>
@@ -49,7 +48,7 @@ export default function About() {
               {[
                 "CI/CD Pipelines",
                 "Automated Testing",
-                "Azure Cloud",
+                "AI-Assisted Tooling",
                 "Multi-platform (iOS/Android/Web)",
               ].map((item) => (
                 <div

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const roles = ["QA Automation Engineer", "DevOps Engineer"];
+const roles = ["QA Automation Engineer", "SDET"];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -40,13 +40,13 @@ export default function Hero() {
         </div>
 
         <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
-          I build CI/CD pipelines{" "}
-          <span className="text-white font-semibold">and</span> write automated
-          tests inside them — most DevOps candidates can only do one.
+          I write automated tests across web and mobile{" "}
+          <span className="text-white font-semibold">and</span> build the AI
+          tooling that makes the QA work around them faster.
         </p>
 
         <p className="text-slate-500 text-sm mb-10">
-          Based in India · Open to DevOps / Platform / Cloud roles
+          Based in India · Open to SDET and QA Automation roles
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

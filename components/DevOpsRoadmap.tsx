@@ -1,45 +1,31 @@
 const roadmap = [
   {
-    month: "Jul 2026",
-    topic: "Docker + Linux + Bash",
-    detail: "Containers, images, volumes, networks. Linux fundamentals and shell scripting for automation.",
+    step: "Now",
+    topic: "Linux + Bash",
+    detail: "File system, permissions, processes and shell scripting for automation.",
     status: "in-progress" as const,
+    icon: "🐧",
+  },
+  {
+    step: "Next",
+    topic: "Docker",
+    detail: "Images, containers, volumes and Compose, starting with containerising my own test suites.",
+    status: "upcoming" as const,
     icon: "🐳",
   },
   {
-    month: "Aug 2026",
-    topic: "Kubernetes on AKS",
-    detail: "Pods, deployments, services, ingress. Running and scaling workloads on Azure Kubernetes Service.",
-    status: "upcoming" as const,
-    icon: "☸️",
-  },
-  {
-    month: "Sep 2026",
-    topic: "Terraform + Terraform Associate Cert",
-    detail: "Infrastructure as code for Azure resources. Target: HashiCorp Terraform Associate certification.",
-    status: "upcoming" as const,
-    icon: "🏗️",
-  },
-  {
-    month: "Oct 2026",
-    topic: "Full CI/CD Pipelines",
-    detail: "End-to-end pipelines: build → test → deploy using Azure Pipelines and GitHub Actions.",
+    step: "Then",
+    topic: "CI/CD with Tests",
+    detail: "GitHub Actions pipelines that build, test and report on every push.",
     status: "upcoming" as const,
     icon: "⚙️",
   },
   {
-    month: "Nov 2026",
-    topic: "Monitoring + AZ-400 Cert",
-    detail: "Azure Monitor, Prometheus, Grafana dashboards. Target: AZ-400 DevOps Expert certification.",
+    step: "Later",
+    topic: "Kubernetes + Terraform",
+    detail: "Running workloads on AKS and provisioning the infrastructure as code.",
     status: "upcoming" as const,
-    icon: "📊",
-  },
-  {
-    month: "Dec 2026",
-    topic: "Job Search & Interviews",
-    detail: "Mock interviews, system design practice, applications to Razorpay, CRED, PhonePe, Zepto, Freshworks.",
-    status: "upcoming" as const,
-    icon: "🎯",
+    icon: "☸️",
   },
 ];
 
@@ -61,18 +47,18 @@ export default function DevOpsRoadmap() {
     <section id="roadmap" className="py-20 px-4 bg-slate-900">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-white mb-2 text-center">
-          DevOps Learning Roadmap
+          What I&apos;m Learning
         </h2>
         <p className="text-slate-500 text-center text-sm mb-12">
-          6-month structured plan — started Jul 2026
+          Self-paced alongside full-time work, in this order
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {roadmap.map((item) => {
             const config = statusConfig[item.status];
             return (
               <div
-                key={item.month}
+                key={item.topic}
                 className={`rounded-2xl border bg-slate-800 p-5 flex flex-col gap-3 ${
                   item.status === "in-progress" ? "border-green-500/30" : "border-slate-700"
                 }`}
@@ -89,7 +75,7 @@ export default function DevOpsRoadmap() {
 
                 <div>
                   <p className="text-slate-500 text-xs font-semibold uppercase tracking-widest mb-1">
-                    {item.month}
+                    {item.step}
                   </p>
                   <h3 className="text-white font-bold text-base leading-snug">
                     {item.topic}

@@ -45,18 +45,19 @@ const projects = [
     badge: "Active Engagement",
   },
   {
-    title: "Margaritaville at Sea App",
+    title: "AI-Assisted QA Tooling",
     description:
-      "QA and test automation for the Margaritaville at Sea cruise app build. Owned functional testing on iOS and Android and built the automation alongside it, scoped by a competitor teardown that defined the feature set the app had to match.",
-    tags: ["iOS", "Android", "Functional QA", "Test Automation", "APK Analysis"],
+      "Custom Claude Code skills that turn repeat QA work into a single command: capturing and comparing competitor apps, static analysis of shipped Android binaries, triaging test reports into standup notes, and round-tripping Markdown with branded Word documents.",
+    tags: ["Claude Code", "Python", "Prompt Engineering", "MCP", "Ollama"],
     highlights: [
-      "Functional QA of the app on iOS and Android",
-      "Automation suite built alongside the build",
-      "544 competitor feature rows across 13 apps consolidated into one canonical set",
-      "Static analysis of shipped competitor binaries for SDK and architecture findings",
+      "Competitor teardown pipeline consolidating 544 feature rows across 13 apps",
+      "APK decompilation kit reporting SDKs, vendors and architecture from shipped binaries",
+      "Report triage turning TestNG and Extent results into a failure breakdown",
+      "Markdown to Word round-trip in stdlib Python, verified on 4 documents",
+      "Company lookup on a local qwen3 model grounded in web search",
     ],
     github: null,
-    badge: "Active Engagement",
+    badge: "In Daily Use",
   },
 ];
 

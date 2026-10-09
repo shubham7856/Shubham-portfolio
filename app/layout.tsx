@@ -8,9 +8,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Shubham Sinha — QA Automation & DevOps",
+  title: "Shubham Sinha | QA Automation Engineer & SDET",
   description:
-    "Portfolio of Shubham Sinha — QA Automation Engineer building towards DevOps/Cloud Engineering.",
+    "Portfolio of Shubham Sinha, QA Automation Engineer and SDET building test automation and AI-assisted QA tooling.",
 };
 
 export default function RootLayout({
