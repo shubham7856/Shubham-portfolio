@@ -11,17 +11,18 @@ export default function Contact() {
   return (
     <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-8 pt-24 pb-12 scroll-mt-16">
       <SectionLabel index="03" label="Contact" />
-      <h2 className="font-display font-medium text-4xl sm:text-6xl tracking-[-0.02em] text-ink mb-10 max-w-4xl leading-[1.05]">
+      <h2 data-split className="font-display font-medium text-4xl sm:text-7xl tracking-[-0.02em] text-ink mb-10 max-w-4xl leading-[1.05]">
         Hiring an SDET or QA Automation Engineer?
       </h2>
       <a
+        data-magnetic
         href={`mailto:${profile.email}`}
         className="inline-block font-display text-xl sm:text-3xl text-accent underline decoration-1 underline-offset-[6px] decoration-accent/40 hover:decoration-accent transition-colors duration-200 break-all"
       >
         {profile.email}
       </a>
 
-      <ul className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
+      <ul data-reveal className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
         {links.map((l) => (
           <li key={l.label}>
             <a

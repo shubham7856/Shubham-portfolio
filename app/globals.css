@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f5f4ef;
-  --surface: #ecebe4;
-  --ink: #15171a;
-  --muted: #5c6066;
-  --faint: #8c9096;
-  --line: #d9d7ce;
-  --accent: #17795a;
-  --accent-soft: #dcefe6;
-  --console-bg: #15171a;
-  --console-ink: #e6e7e3;
-  --console-muted: #8b9089;
+  --bg: #f7f5f0;
+  --surface: #efebe2;
+  --ink: #0f1b2d;
+  --muted: #4b5767;
+  --faint: #7a8494;
+  --line: #ddd7ca;
+  --accent: #8a6a2b;
+  --accent-soft: #efe4cc;
+  --console-bg: #0a1628;
+  --console-ink: #f2eee6;
+  --console-muted: #8a97ab;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #111315;
-    --surface: #181b1e;
-    --ink: #ecebe6;
-    --muted: #a3a7ac;
-    --faint: #6f747a;
-    --line: #2a2e33;
-    --accent: #4cc596;
-    --accent-soft: #163128;
-    --console-bg: #0b0c0d;
-    --console-ink: #e6e7e3;
-    --console-muted: #7b8079;
+    --bg: #0a1628;
+    --surface: #0f1f36;
+    --ink: #ece8df;
+    --muted: #a7b0be;
+    --faint: #6f7b8e;
+    --line: #1e2e47;
+    --accent: #d4b06a;
+    --accent-soft: #2a2414;
+    --console-bg: #071020;
+    --console-ink: #f2eee6;
+    --console-muted: #8a97ab;
   }
 }
 
@@ -62,13 +62,121 @@ body {
   color: var(--ink);
 }
 
-.reveal-line {
-  opacity: 0;
-  animation: reveal 300ms ease-out forwards;
+/* Lenis recommended base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-@keyframes reveal {
+/* Custom cursor, only switched on by Cursor.tsx for fine pointers without reduced motion */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  border-radius: 999px;
+  mix-blend-mode: difference;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #fff;
+}
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button {
+  cursor: none;
+}
+
+/* Work: stacked on mobile, a two-column grid on desktop, and a pinned sideways row
+   only when ScrollFx adds .is-horizontal (desktop with motion allowed). */
+.work-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.work-hint {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .work-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .work-intro {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+  .work-pin.is-horizontal {
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .work-pin.is-horizontal .work-track {
+    display: flex;
+    flex-direction: row;
+    max-width: none;
+    margin: 0;
+    padding: 0 8vw 0 max(2rem, calc((100vw - 72rem) / 2 + 2rem));
+    will-change: transform;
+  }
+  .work-pin.is-horizontal .work-intro {
+    width: 30rem;
+    padding-right: 2rem;
+    margin-bottom: 0;
+  }
+  .work-pin.is-horizontal .project-card {
+    width: 34rem;
+    height: 34rem;
+  }
+  .work-pin.is-horizontal .work-hint {
+    display: inline;
+  }
+}
+
+/* Skills marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+  animation-duration: 48s;
+}
+@keyframes marquee {
   to {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-cue {
+  animation: cue 2s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes cue {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
     opacity: 1;
   }
 }
@@ -77,8 +185,8 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .reveal-line {
-    opacity: 1;
+  .marquee-track,
+  .scroll-cue {
     animation: none;
   }
 }

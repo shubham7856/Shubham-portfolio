@@ -7,10 +7,10 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-24 grid lg:grid-cols-2 gap-16">
         <div>
           <SectionLabel index="02" label="About" />
-          <h2 className="font-display font-medium text-3xl sm:text-4xl tracking-[-0.02em] text-ink mb-8">
+          <h2 data-split className="font-display font-medium text-3xl sm:text-5xl tracking-[-0.02em] text-ink mb-8">
             Tests, and the tooling around them.
           </h2>
-          <div className="space-y-5 text-muted text-[17px] leading-relaxed">
+          <div data-reveal className="space-y-5 text-muted text-[17px] leading-relaxed">
             <p>
               I&apos;m an Associate QA Engineer at Atimi Software in Bengaluru, where I joined as a QA
               Trainee in May 2024. I write automation for web and mobile client projects: Java with
@@ -26,7 +26,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mt-12">
+          <div data-reveal className="mt-12">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-4">Learning path</p>
             <ol className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden">
               {learning.map((l) => (
@@ -42,7 +42,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="lg:pt-14">
+        <div data-reveal className="lg:pt-14">
           <dl className="divide-y divide-line border-y border-line">
             {skills.map((s) => (
               <div key={s.group} className="py-6 grid sm:grid-cols-[10rem_1fr] gap-3">
